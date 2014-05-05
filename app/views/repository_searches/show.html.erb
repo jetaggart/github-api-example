@@ -1,2 +1,5 @@
-idea-haskell
-emacs
+<ul>
+    <% @repository_search.results.each do |result| %>
+        <li><%= result['name'] %></li>
+    <% end %>
+</ul>

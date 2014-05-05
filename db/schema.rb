@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140501225751) do
+ActiveRecord::Schema.define(version: 20140502154523) do
 
   create_table "repository_searches", force: true do |t|
     t.string "username"
+    t.text   "results"
   end
 
 end
