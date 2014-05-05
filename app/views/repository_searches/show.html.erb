@@ -1,5 +1,5 @@
 <ul>
     <% @repository_search.results.each do |result| %>
-        <li><%= result['name'] %></li>
+        <li><%= link_to result["name"], repository_issue_path(:username => @repository_search.username, :id => result["name"]) %></li>
     <% end %>
 </ul>

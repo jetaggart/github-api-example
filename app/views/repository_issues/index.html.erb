@@ -1,0 +1,5 @@
+<ul>
+    <% @repository_issues.each do |issue| %>
+        <li> <%= issue.fetch("title") %></li>
+    <% end %>
+</ul>
