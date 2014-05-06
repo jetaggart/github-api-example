@@ -5,7 +5,7 @@ describe GithubApi do
 
   describe "#respositories" do
     it "returns the repositories for jetaggart" do
-      VCR.use_cassette "github/users/jetaggart/repositories" do
+      VCR.use_cassette "jetaggart/repositories" do
         results = JSON.parse github_api.repositories(:username => "jetaggart")
 
         names = results.map { |result| result["name"] }
@@ -16,7 +16,7 @@ describe GithubApi do
     end
 
     it "returns the right repositories for durhamka" do
-      VCR.use_cassette "github/users/durhamka/repositories" do
+      VCR.use_cassette "durhamka/repositories" do
         results = JSON.parse github_api.repositories(:username => "durhamka")
 
         names = results.map { |result| result["name"] }
@@ -29,13 +29,27 @@ describe GithubApi do
 
   describe "#issues" do
     it "returns the the issues for a specific repository" do
-      VCR.use_cassette "github/users/jetaggart/repositories/light-haskell/issues" do
+      VCR.use_cassette "jetaggart/repositories/light-haskell/issues" do
         results = JSON.parse github_api.issues(:username => "jetaggart", :id => "light-haskell")
 
         titles = results.map { |result| result["title"] }
 
         expect(titles).to include("Seems like nothing working...")
         expect(titles).to include("Running server remotely")
+      end
+    end
+  end
+
+  describe "#create_issue" do
+    it "allows a user to create an issue" do
+      VCR.use_cassette "jetaggart/repositories/github-api-example/issues/create" do
+        result = JSON.parse(
+          github_api.create_issue(:username => "jetaggart",
+                                  :id => "github-api-example",
+                                  :title => "This is an issue title")
+        )
+
+        expect(result["title"]).to eq("This is an issue title")
       end
     end
   end
