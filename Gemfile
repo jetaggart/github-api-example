@@ -16,6 +16,8 @@ gem 'faraday'
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
