@@ -1,7 +1,7 @@
 <ul>
-    <% @repository_search.results.each do |result| %>
+    <% @repository_search.repos.each do |repo| %>
         <li>
-            <%= link_to result["name"], repository_issues_path(:username => @repository_search.username, :id => result["name"]) %>
+            <%= link_to repo.name, repository_issues_path(:username => @repository_search.username, :id => repo.name) %>
         </li>
     <% end %>
 </ul>

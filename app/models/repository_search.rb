@@ -1,7 +1,5 @@
 class RepositorySearch < ActiveRecord::Base
-  def results
-    JSON.parse(
-      read_attribute(:results)
-    )
+  def repos
+    JSON.parse(results).map { |result| Repository.new(result) }
   end
 end
