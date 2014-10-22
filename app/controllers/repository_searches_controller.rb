@@ -12,7 +12,9 @@ class RepositorySearchesController < ApplicationController
   end
 
   def create
-    search_results = GithubApi.new.repositories(:username => repository_search_params[:username])
+    search_results = GithubApi.new.repositories(
+      :username => repository_search_params[:username]
+    )
 
     @repository_search = RepositorySearch.new(
         repository_search_params.merge(:results => search_results)
@@ -20,7 +22,7 @@ class RepositorySearchesController < ApplicationController
 
     @repository_search.save!
 
-    redirect_to repository_search_path(@repository_search.id)
+    redirect_to @repository_search
   end
 
   def repository_search_params
