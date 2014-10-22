@@ -1,3 +1,7 @@
-<% @repository_searches.each do |repository_search| %>
-    <%= link_to repository_search.username, repository_search %>
-<% end %>
+<ul>
+  <% @repository_searches.each do |repository_search| %>
+    <li>
+      <%= link_to repository_search.username, repository_search %>
+    </li>
+  <% end %>
+</ul>
