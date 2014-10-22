@@ -70,17 +70,18 @@ nav {
     line-height: 75px;
 
     li {
-      display: inline-block;
+      margin-top: 10px;
+      height: 55px;
+      display: block;
+      float: left;
+      border-right: 2px solid $blue;
+      padding: 0 10px;
+      line-height: 55px;
 
       > a {
         font-size: 22px;
         color: white;
         text-decoration: none;
-        
-        &:after {
-          content: " | ";
-          color: white
-        }
 
         &:hover {
           color: $blue;
@@ -88,9 +89,7 @@ nav {
       }
 
       &:last-child {
-        > a:after {
-          content: "";
-        }
+        border: none;
       }
     }
   }
