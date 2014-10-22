@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root :to => "dashboard#index"
+  root :to => "repository_searches#new"
 
   resources :repository_searches
 

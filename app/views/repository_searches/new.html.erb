@@ -1,5 +1,7 @@
+<h1>Search by username:</h1>
+
 <%= form_for @repository_search do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %>
-    <%= f.submit "Search" %>
+    <%= f.submit "Search", :class => "btn" %>
 <% end %>
