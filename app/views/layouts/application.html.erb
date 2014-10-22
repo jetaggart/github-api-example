@@ -7,6 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li>
+        <%= link_to "Dashboard", root_path %>
+      </li>
+      <li>
+        <%= link_to "Searches", repository_searches_path %>
+      </li>
+    </ul>
+  </nav>
 
   <main>
     <%= yield %>

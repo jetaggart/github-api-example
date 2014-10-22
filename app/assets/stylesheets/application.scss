@@ -1,5 +1,4 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+/* * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
@@ -14,56 +13,15 @@
  *= require_self
  */
 
+$blue: #3498db;
+
 
 body {
   width: 100%;
   height: 100%;
   font-family: Helvetica;
-}
-
-main {
-  width: 500px;
-  margin: 0 auto;
-}
-
-h1 {
-  
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
   padding: 0;
-
-  li {
-    box-sizing: border-box;
-    width: 500px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    margin-bottom: 5px;
-    border-radius: 3px;
-    background-color: #eee;
-
-    > a {
-      display: block;
-      width: 100%;
-      text-decoration: none;
-      color: black;
-    } 
-
-    &:nth-child(odd) {
-      background-color: #ddd;
-    }
-
-    &:hover {
-      background-color: #3498db;
-
-      > a {
-        color: white;
-      }
-    }
-  }
+  margin: 0;
 }
 
 .btn {
@@ -91,4 +49,86 @@ ul {
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  width: 100%;
+  background-color: #111;
+  height: 75px;
+
+  ul {
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    height: 75px;
+    line-height: 75px;
+
+    li {
+      display: inline-block;
+
+      > a {
+        font-size: 22px;
+        color: white;
+        text-decoration: none;
+        
+        &:after {
+          content: " | ";
+          color: white
+        }
+
+        &:hover {
+          color: $blue;
+        }
+      }
+
+      &:last-child {
+        > a:after {
+          content: "";
+        }
+      }
+    }
+  }
+}
+
+main {
+  width: 500px;
+  margin: 0 auto;
+}
+
+main ul {
+  li {
+    box-sizing: border-box;
+    width: 500px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    background-color: #eee;
+
+    > a {
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      color: black;
+    } 
+
+    &:nth-child(odd) {
+      background-color: #ddd;
+    }
+
+    &:hover {
+      background-color: $blue;
+
+      > a {
+        color: white;
+      }
+    }
+  }
 }
