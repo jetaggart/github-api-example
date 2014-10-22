@@ -1,14 +1,14 @@
-<ul>
-    <% @repository_issues.each do |issue| %>
-        <li> <%= issue.fetch("title") %></li>
-    <% end %>
-</ul>
-
 <h1>Create New Issue</h1>
 
 <%= form_for @issue, :as => :issue, :url => repository_issues_path(:username => params[:username], :id => params[:id]) do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     
-    <%= f.submit "Create Issue" %>
+    <%= f.submit "Create Issue", :class => "btn" %>
 <% end %>
+
+<ul>
+    <% @repository_issues.each do |issue| %>
+        <li> <%= issue.fetch("title") %></li>
+    <% end %>
+</ul>
