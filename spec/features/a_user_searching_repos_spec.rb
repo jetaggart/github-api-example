@@ -2,12 +2,13 @@ require "spec_helper"
 
 feature "User Repositories" do
   scenario "viewing a user's repositories" do
-    VCR.use_cassette "github/users/jetaggart/repositories" do
+    VCR.use_cassette "github/users/psylinse/repositories" do
       visit "/"
-      click_on "Find User's Repositories"
 
-      fill_in "Username", :with => "jetaggart"
-      click_on "Search"
+      within("main") do
+        fill_in "Username", :with => "psylinse"
+        click_on "Search"
+      end
 
       expect(page).to have_content("light-haskell")
       expect(page).to have_content("emacs")
@@ -16,26 +17,28 @@ feature "User Repositories" do
   end
   
   scenario "viewing multiple searches" do
-    VCR.use_cassette "github/users/multiple/repositories" do
+    VCR.use_cassette "github/users/multiple/repositories", :record => :all do
       visit "/"
-      click_on "Find User's Repositories"
 
-      fill_in "Username", :with => "jetaggart"
-      click_on "Search"
-
-      visit "/"
-      click_on "Find User's Repositories"
-
-      fill_in "Username", :with => "durhamka"
-      click_on "Search"
+      within("main") do
+        fill_in "Username", :with => "psylinse"
+        click_on "Search"
+      end
 
       visit "/"
-      click_on "View past searches"
 
-      expect(page).to have_content("jetaggart")
+      within("main") do
+        fill_in "Username", :with => "durhamka"
+        click_on "Search"
+      end
+
+      visit "/"
+      click_on "Past Searches"
+
+      expect(page).to have_content("psylinse")
       expect(page).to have_content("durhamka")
 
-      click_on "jetaggart"
+      click_on "psylinse"
 
       expect(page).to have_content("light-haskell")
       expect(page).to have_content("emacs")

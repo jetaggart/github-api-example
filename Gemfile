@@ -13,10 +13,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'faraday'
 
-group :development, :test do
-  gem 'dotenv-rails'
+group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
+end
+
+group :development, :test do
+  gem 'dotenv-rails'
 end
 
 group :test do

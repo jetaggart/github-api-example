@@ -4,9 +4,9 @@ describe GithubApi do
   let(:github_api) { GithubApi.new }
 
   describe "#respositories" do
-    it "returns the repositories for jetaggart" do
-      VCR.use_cassette "jetaggart/repositories" do
-        results = JSON.parse github_api.repositories(:username => "jetaggart")
+    it "returns the repositories for psylinse" do
+      VCR.use_cassette "psylinse/repositories" do
+        results = JSON.parse github_api.repositories(:username => "psylinse")
 
         names = results.map { |result| result["name"] }
 
@@ -29,8 +29,9 @@ describe GithubApi do
 
   describe "#issues" do
     it "returns the the issues for a specific repository" do
-      VCR.use_cassette "jetaggart/repositories/light-haskell/issues" do
-        results = JSON.parse github_api.issues(:username => "jetaggart", :id => "light-haskell")
+      VCR.use_cassette "psylinse/repositories/light-haskell/issues" do
+        results = JSON.parse github_api.issues(:username => "psylinse",
+                                               :id => "light-haskell")
 
         titles = results.map { |result| result["title"] }
 
@@ -42,11 +43,11 @@ describe GithubApi do
 
   describe "#create_issue" do
     it "allows a user to create an issue" do
-      VCR.use_cassette "jetaggart/repositories/github-api-example/issues/create" do
+      VCR.use_cassette "psylinse/repositories/github-api-example/issues/create" do
         result = JSON.parse(
-          github_api.create_issue(:username => "jetaggart",
-                                  :id => "github-api-example",
-                                  :title => "This is an issue title")
+          github_api.create_issue(:username => "psylinse",
+                                  :id       => "github-api-example",
+                                  :title    => "This is an issue title")
         )
 
         expect(result["title"]).to eq("This is an issue title")
